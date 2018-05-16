@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.pytest_cache/
 *.py[cod]
 *$py.class
 
@@ -47,6 +48,11 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+.env
 
 # Database:
 *.sqlite3
+
+# Vim files
+*.swo
+*.swp
