@@ -30,7 +30,7 @@ wheels/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit test / coverage reports / vcr cassettes
 htmlcov/
 .tox/
 .coverage
@@ -40,6 +40,7 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+vcr_cassettes/
 
 # Translations
 *.mo

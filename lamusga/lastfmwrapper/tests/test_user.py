@@ -1,6 +1,9 @@
+import vcr
+
 from lastfmwrapper import User
 
 
+@vcr.use_cassette('vcr_cassettes/user-recent-tracks.yml')
 def test_recent_tracks():
     username = 'diegodukao'
     lfm_user = User(username)
