@@ -126,3 +126,8 @@ STATIC_URL = '/static/'
 
 # Last.fm API key
 LASTFM_API_KEY = config('LASTFM_API_KEY')
+
+# Spotify API keys and redirect url
+SPOTIFY_CLIENT_ID = config('SPOTIFY_CLIENT_ID')
+SPOTIFY_CLIENT_SECRET = config('SPOTIFY_CLIENT_SECRET')
+SPOTIFY_REDIRECT_URI = config('SPOTIFY_REDIRECT_URI')
