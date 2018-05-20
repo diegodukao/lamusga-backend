@@ -1,0 +1,58 @@
+interactions:
+- request:
+    body: grant_type=authorization_code&code=AQBIEf9hzHiP2NyDYbX5uheTqeYj8goASVdGHqz1-w7h3JXipOwSRbBxuA4XFq4blfeZuOHTIX0c1v4wtMK2pKN9dDcFis2CYuSNoJPjWeaRRPIA76tXeFoc60l1PQTZdF772EJZThWUGaEh9JLb98AD1JUkoqK2PdhUDPA2be5TtQUvu33r1vZsWHItuw7Ta-NRqtqUuQ3I_pevhdc94rIMHu05Ub5pHda9UN3WYRg-_u5FYVRvxA&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fcallback
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['335']
+      Content-Type: [application/x-www-form-urlencoded]
+      User-Agent: [python-requests/2.18.4]
+    method: POST
+    uri: https://accounts.spotify.com/api/token
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA0XPwXKCMABF0V/psK4zAhJid4BUKYJABNQNEyFKBAUSsCWd/nttF+3y3dV5nxLO
+        c8J51jcVuUkvkhka5emorZHcpRq2vXhzcI56Ojir8QAiivrsHr8Xq5vNuglJdlelPSzL/eljjA0t
+        SG00qLEPhbEtNJWJeLF+rRiDOXK2lVhgGmxIYjtL0GUTB1N5nJ47EPpIQWoU7JtLI/J67tpvWblt
+        sAthsluklWpaHQgAkgVUjHet8KRn6Veb9WNLfsgEM8IelXy0lBGe0ccRFUynzxIjp0co/94ZoXne
+        0UvvzXWq6O48sKI9S/xIeOGgwGOnxVVaX+mRyThHeuVwAN1BVSB2fMssu8beuJluBUhsZd5DmV7Q
+        ktB1vays0PS5fuKz5LUTu56AbJGCxrPHRIla/zwj9VrMivwMZw8nz5tf+MAJmzCCiwm5Ylo//e+W
+        0TvuifT1DRMiXBKgAQAA
+    headers:
+      Cache-Control: ['no-cache, no-store, must-revalidate']
+      Connection: [keep-alive]
+      Content-Encoding: [gzip]
+      Content-Security-Policy: ['default-src ''self''; script-src ''self'' https://d2d1dxiu3v1f2i.cloudfront.net
+          https://www.google-analytics.com https://www.google.com https://www.gstatic.com;
+          img-src ''self'' https://d2d1dxiu3v1f2i.cloudfront.net https://i.imgur.com
+          https://d2mv8tnci56s9d.cloudfront.net https://profile-images.scdn.co https://aci.scdn.co
+          https://graph.facebook.com https://fbcdn-profile-a.akamaihd.net https://scontent.xx.fbcdn.net
+          https://www.google-analytics.com https://stats.g.doubleclick.net data: d2d1dxiu3v1f2i.cloudfront.net;
+          font-src ''self'' https://d2d1dxiu3v1f2i.cloudfront.net https://sp-bootstrap.global.ssl.fastly.net
+          https://fonts.gstatic.com; style-src ''self'' ''unsafe-inline'' https://d2d1dxiu3v1f2i.cloudfront.net;
+          frame-src ''self'' https://www.spotify.com https://www.google.com https://app.adjust.com
+          https://itunes.apple.com itms-apps:;']
+      Content-Type: [application/json]
+      Date: ['Sun, 20 May 2018 01:58:47 GMT']
+      Keep-Alive: [timeout=600]
+      Pragma: [no-cache]
+      Server: [nginx]
+      Strict-Transport-Security: [max-age=31536000]
+      Vary: [Accept-Encoding]
+      X-Content-Security-Policy: ['default-src ''self''; script-src ''self'' https://d2d1dxiu3v1f2i.cloudfront.net
+          https://www.google-analytics.com https://www.google.com https://www.gstatic.com;
+          img-src ''self'' https://d2d1dxiu3v1f2i.cloudfront.net https://i.imgur.com
+          https://d2mv8tnci56s9d.cloudfront.net https://profile-images.scdn.co https://aci.scdn.co
+          https://graph.facebook.com https://fbcdn-profile-a.akamaihd.net https://scontent.xx.fbcdn.net
+          https://www.google-analytics.com https://stats.g.doubleclick.net data: d2d1dxiu3v1f2i.cloudfront.net;
+          font-src ''self'' https://d2d1dxiu3v1f2i.cloudfront.net https://sp-bootstrap.global.ssl.fastly.net
+          https://fonts.gstatic.com; style-src ''self'' ''unsafe-inline'' https://d2d1dxiu3v1f2i.cloudfront.net;
+          frame-src ''self'' https://www.spotify.com https://www.google.com https://app.adjust.com
+          https://itunes.apple.com itms-apps:;']
+      X-Content-Type-Options: [nosniff]
+      X-Frame-Options: [deny]
+      X-UA-Compatible: [IE=edge]
+    status: {code: 200, message: OK}
+version: 1

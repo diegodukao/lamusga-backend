@@ -1,5 +1,7 @@
 import base64
 
+import requests
+
 from django.conf import settings
 
 
@@ -15,9 +17,24 @@ class Auth(object):
             f'{client_id}:{client_secret}'.encode('ascii'))
         self.auth_key = auth_key.decode('ascii')
 
+        self.url = 'https://accounts.spotify.com/api/token'
+
     @property
     def _headers(self):
         return {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': f'Basic {self.auth_key}',
         }
+
+    def request_tokens(self):
+        payload = {
+            'grant_type': 'authorization_code',
+            'code': self.code,
+            'redirect_uri': self.redirect_uri,
+          }
+
+        response = requests.post(
+            self.url, headers=self._headers, data=payload)
+        data = response.json()
+
+        return data['access_token'], data['refresh_token']
