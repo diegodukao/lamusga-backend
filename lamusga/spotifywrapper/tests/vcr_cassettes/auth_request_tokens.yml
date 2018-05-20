@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: grant_type=authorization_code&code=AQBIEf9hzHiP2NyDYbX5uheTqeYj8goASVdGHqz1-w7h3JXipOwSRbBxuA4XFq4blfeZuOHTIX0c1v4wtMK2pKN9dDcFis2CYuSNoJPjWeaRRPIA76tXeFoc60l1PQTZdF772EJZThWUGaEh9JLb98AD1JUkoqK2PdhUDPA2be5TtQUvu33r1vZsWHItuw7Ta-NRqtqUuQ3I_pevhdc94rIMHu05Ub5pHda9UN3WYRg-_u5FYVRvxA&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fcallback
+    body: grant_type=authorization_code&code=AQDQ943dAEguAxMypx0JuexLtM0Z7egb2hI-dpo5s-kQBAAn83yHS57nXJlT0kBFEs7o1YcjMdWCGrWBYFEP138tfRzRHBMI9aEDXhb08HxyUoc3SuHsu-WZvUJzAf57rKiUIt-XUL8fCsqYNJTaQMQG6E7t4BsOwtPyj_keLoIv8n6vpsRsseA4rhtxMkWyEP-cynmDBUI98JOTvDM7r43SaxpPBvWHXDpYvJzyJbRVKYa70SHfIg&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fcallback
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
@@ -13,13 +13,13 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA0XPwXKCMABF0V/psK4zAhJid4BUKYJABNQNEyFKBAUSsCWd/nttF+3y3dV5nxLO
-        c8J51jcVuUkvkhka5emorZHcpRq2vXhzcI56Ojir8QAiivrsHr8Xq5vNuglJdlelPSzL/eljjA0t
-        SG00qLEPhbEtNJWJeLF+rRiDOXK2lVhgGmxIYjtL0GUTB1N5nJ47EPpIQWoU7JtLI/J67tpvWblt
-        sAthsluklWpaHQgAkgVUjHet8KRn6Veb9WNLfsgEM8IelXy0lBGe0ccRFUynzxIjp0co/94ZoXne
-        0UvvzXWq6O48sKI9S/xIeOGgwGOnxVVaX+mRyThHeuVwAN1BVSB2fMssu8beuJluBUhsZd5DmV7Q
-        ktB1vays0PS5fuKz5LUTu56AbJGCxrPHRIla/zwj9VrMivwMZw8nz5tf+MAJmzCCiwm5Ylo//e+W
-        0TvuifT1DRMiXBKgAQAA
+        H4sIAAAAAAAAA0XPUXNrQBjG8a/ScV0zQYjTu2wORYkKCe2NWfZlxSZkl2I6/e4npxft5fO/+j2f
+        Ei5LECIfuhau0pOEIqQciX9KpyFKirAsE8fpqncEG3gddN+OTbUd3+1CuxxR2cR65k8Kvj3rvnsL
+        2TRSbR/IiSbLsNAzYU0ARursp2A8eajNl8t2UdtraGyc2tHCTWR4eYCHWxebdWSksTldlaHttkmI
+        iHdS3NlDSY4ie2Yv9JzN4V7f7byV9Ch9a/Nh6eE/GTAHfq8w9w0HkTf3I5qxWj1KHKp7oD/vttG2
+        2JHad1/qCB8tmKnRQbXQZCTVpObcpPqbWv8NpjWyDoTrbcBj9WixtWnHrPoo/NssyLowejt5608c
+        12xJM4hTFlXKdMhcoYP8J7fYOTsEpblehPXaWqLYEJ9Sn7nPjlfenaLsvuGjAC5zwESGC27Yw+/u
+        efOBB5C+/gGRqoHAoAEAAA==
     headers:
       Cache-Control: ['no-cache, no-store, must-revalidate']
       Connection: [keep-alive]
@@ -35,7 +35,7 @@ interactions:
           frame-src ''self'' https://www.spotify.com https://www.google.com https://app.adjust.com
           https://itunes.apple.com itms-apps:;']
       Content-Type: [application/json]
-      Date: ['Sun, 20 May 2018 01:58:47 GMT']
+      Date: ['Sun, 20 May 2018 14:50:49 GMT']
       Keep-Alive: [timeout=600]
       Pragma: [no-cache]
       Server: [nginx]

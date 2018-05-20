@@ -1,6 +1,9 @@
 import base64
 import os
 
+from unittest.mock import call, patch
+
+import requests
 import vcr as vcr_module
 
 from django.conf import settings
@@ -42,9 +45,24 @@ def test_headers_property():
 
 @vcr.use_cassette(cassettes_path.format('auth_request_tokens.yml'))
 def test_request_access_and_refresh_tokens():
-    code = 'AQBIEf9hzHiP2NyDYbX5uheTqeYj8goASVdGHqz1-w7h3JXipOwSRbBxuA4XFq4blfeZuOHTIX0c1v4wtMK2pKN9dDcFis2CYuSNoJPjWeaRRPIA76tXeFoc60l1PQTZdF772EJZThWUGaEh9JLb98AD1JUkoqK2PdhUDPA2be5TtQUvu33r1vZsWHItuw7Ta-NRqtqUuQ3I_pevhdc94rIMHu05Ub5pHda9UN3WYRg-_u5FYVRvxA'  # NOQA
+    code = 'AQDQ943dAEguAxMypx0JuexLtM0Z7egb2hI-dpo5s-kQBAAn83yHS57nXJlT0kBFEs7o1YcjMdWCGrWBYFEP138tfRzRHBMI9aEDXhb08HxyUoc3SuHsu-WZvUJzAf57rKiUIt-XUL8fCsqYNJTaQMQG6E7t4BsOwtPyj_keLoIv8n6vpsRsseA4rhtxMkWyEP-cynmDBUI98JOTvDM7r43SaxpPBvWHXDpYvJzyJbRVKYa70SHfIg'  # NOQA
     spfy_auth = Auth(code)
-    access_token, refresh_token = spfy_auth.request_tokens()
+
+    requests_to_mock_path = 'spotifywrapper.auth.requests.post'
+    with patch(requests_to_mock_path, wraps=requests.post) as mock_post:
+        access_token, refresh_token = spfy_auth.request_tokens()
+
+        expected_call = call(
+            spfy_auth.url,
+            data={
+                'grant_type': 'authorization_code',
+                'code': code,
+                'redirect_uri': spfy_auth.redirect_uri,
+            },
+            headers=spfy_auth._headers,
+        )
+
+        assert expected_call in mock_post.call_args_list
 
     assert access_token
     assert refresh_token
