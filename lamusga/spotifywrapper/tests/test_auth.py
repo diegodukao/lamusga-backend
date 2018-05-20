@@ -17,3 +17,17 @@ def test_initialize_auth_object():
     assert code == spfy_auth.code
     assert settings.SPOTIFY_REDIRECT_URI == spfy_auth.redirect_uri
     assert expected_auth_key == spfy_auth.auth_key
+
+
+def test_headers_property():
+    code = 'coDE'
+    spfy_auth = Auth(code)
+
+    fake_auth_key = 'fake_key'
+    spfy_auth.auth_key = fake_auth_key
+
+    headers = spfy_auth._headers
+    assert isinstance(headers, dict)
+    assert 'application/x-www-form-urlencoded' == headers['Content-Type']
+    assert f'Basic {fake_auth_key}' == headers['Authorization']
+

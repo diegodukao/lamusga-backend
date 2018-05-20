@@ -14,3 +14,10 @@ class Auth(object):
         auth_key = base64.b64encode(
             f'{client_id}:{client_secret}'.encode('ascii'))
         self.auth_key = auth_key.decode('ascii')
+
+    @property
+    def _headers(self):
+        return {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': f'Basic {self.auth_key}',
+        }
