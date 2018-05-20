@@ -11,6 +11,6 @@ class Auth(object):
 
         client_id = settings.SPOTIFY_CLIENT_ID
         client_secret = settings.SPOTIFY_CLIENT_SECRET
-        bearer = base64.b64encode(
+        auth_key = base64.b64encode(
             f'{client_id}:{client_secret}'.encode('ascii'))
-        self.bearer = bearer.decode('ascii')
+        self.auth_key = auth_key.decode('ascii')
