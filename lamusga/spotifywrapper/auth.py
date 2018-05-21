@@ -51,3 +51,15 @@ class Auth(object):
         data = response.json()
 
         return data['access_token'], data['refresh_token']
+
+    def refresh_access_token(self):
+        payload = {
+            'grant_type': 'refresh_token',
+            'refresh_token': self.refresh_token,
+        }
+
+        response = requests.post(
+            self.url, headers=self._headers, data=payload)
+        data = response.json()
+
+        return data['access_token']

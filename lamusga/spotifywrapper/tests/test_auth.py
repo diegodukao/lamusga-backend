@@ -81,20 +81,37 @@ class TestAuthMethods:
         with patch(requests_to_mock_path, wraps=requests.post) as mock_post:
             access_token, refresh_token = spfy_auth.request_tokens()
 
-            expected_call = call(
-                spfy_auth.url,
-                data={
-                    'grant_type': 'authorization_code',
-                    'code': code,
-                    'redirect_uri': spfy_auth.redirect_uri,
-                },
-                headers=spfy_auth._headers,
-            )
+        expected_call = call(
+            spfy_auth.url,
+            data={
+                'grant_type': 'authorization_code',
+                'code': code,
+                'redirect_uri': spfy_auth.redirect_uri,
+            },
+            headers=spfy_auth._headers,
+        )
 
-            assert expected_call in mock_post.call_args_list
-
+        assert expected_call in mock_post.call_args_list
         assert access_token
         assert refresh_token
 
-    def test_refresh_token(self):
-        pass
+    @vcr.use_cassette(cassettes_path.format('auth_refresh_token.yml'))
+    def test_refresh_access_token(self):
+        refresh_token = 'AQB9Ft0eD6E-aB4IxK5d-OPuDhwYfcXvDhBI1sCid8PO2spKVTmhZgrRbC6C6jWmDCW3_rXZxyRPmFuEzk9g7fyi7GGqHobKIUwWzrL-W5f-MMRfpYHl0dF1yVUiYK8qJaM' # NOQA
+        spfy_auth = Auth(refresh_token=refresh_token)
+
+        requests_to_mock_path = 'spotifywrapper.auth.requests.post'
+        with patch(requests_to_mock_path, wraps=requests.post) as mock_post:
+            access_token = spfy_auth.refresh_access_token()
+
+        expected_call = call(
+            spfy_auth.url,
+            data={
+                'grant_type': 'refresh_token',
+                'refresh_token': refresh_token,
+            },
+            headers=spfy_auth._headers,
+        )
+
+        assert expected_call in mock_post.call_args_list
+        assert access_token
