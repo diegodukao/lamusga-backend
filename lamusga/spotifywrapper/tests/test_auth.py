@@ -19,21 +19,35 @@ cassettes_path = os.path.join(settings.BASE_DIR,
 
 
 class TestAuthInit:
+
+    @pytest.fixture(autouse=True)
+    def initial(self):
+        client_id = settings.SPOTIFY_CLIENT_ID
+        client_secret = settings.SPOTIFY_CLIENT_SECRET
+
+        self.expected_auth_key = base64.b64encode(
+            f'{client_id}:{client_secret}'.encode('ascii')).decode('ascii')
+        self.expected_url = 'https://accounts.spotify.com/api/token'
+
     def test_initialize_auth_object_with_code(self):
         code = 'coDE'
         spfy_auth = Auth(code=code)
 
-        client_id = settings.SPOTIFY_CLIENT_ID
-        client_secret = settings.SPOTIFY_CLIENT_SECRET
-
-        expected_auth_key = base64.b64encode(
-            f'{client_id}:{client_secret}'.encode('ascii')).decode('ascii')
-        expected_url = 'https://accounts.spotify.com/api/token'
-
         assert code == spfy_auth.code
+        assert not spfy_auth.refresh_token
         assert settings.SPOTIFY_REDIRECT_URI == spfy_auth.redirect_uri
-        assert expected_auth_key == spfy_auth.auth_key
-        assert expected_url == spfy_auth.url
+        assert self.expected_auth_key == spfy_auth.auth_key
+        assert self.expected_url == spfy_auth.url
+
+    def test_initialize_auth_object_with_refresh_token(self):
+        refresh_token = 'refResh_tOk3n'
+        spfy_auth = Auth(refresh_token=refresh_token)
+
+        assert refresh_token == spfy_auth.refresh_token
+        assert not spfy_auth.code
+        assert settings.SPOTIFY_REDIRECT_URI == spfy_auth.redirect_uri
+        assert self.expected_auth_key == spfy_auth.auth_key
+        assert self.expected_url == spfy_auth.url
 
     def test_raises_exception_if_code_neither_token_is_passed(self):
         with pytest.raises(NoCodeNeitherRefreshTokenException) as excp:
@@ -45,6 +59,7 @@ class TestAuthInit:
 
 
 class TestAuthMethods:
+
     def test_headers_property(self):
         code = 'coDE'
         spfy_auth = Auth(code=code)
