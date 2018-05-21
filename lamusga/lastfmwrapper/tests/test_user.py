@@ -15,6 +15,20 @@ cassettes_path = os.path.join(settings.BASE_DIR,
                               'lastfmwrapper/tests/vcr_cassettes/{}')
 
 
+def test_initializer_user_object():
+    username = 'diegodukao'
+    lfm_user = User(username)
+
+    expected_params = {
+        'api_key': settings.LASTFM_API_KEY,
+        'format': 'json',
+    }
+
+    assert username == lfm_user.username
+    assert 'http://ws.audioscrobbler.com/2.0/' == lfm_user.server
+    assert expected_params == lfm_user.request_params
+
+
 @vcr.use_cassette(cassettes_path.format('user-recent-tracks.yml'))
 def test_recent_tracks():
     username = 'diegodukao'
