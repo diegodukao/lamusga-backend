@@ -1,4 +1,6 @@
-from lastfmwrapper import session  # created in __init__.py
+import requests
+
+from django.conf import settings
 
 
 class User(object):
@@ -7,8 +9,20 @@ class User(object):
         self.username = username
         self.server = 'http://ws.audioscrobbler.com/2.0/'
 
+        self.request_params = {
+            'api_key': settings.LASTFM_API_KEY,
+            'format': 'json',
+        }
+
     def recent_tracks(self):
-        path = self.server + '?method=user.getrecenttracks&user={}'
-        response = session.get(path.format(self.username))
+        path = (
+            f'{self.server}'
+            f'?method=user.getrecenttracks'
+            f'&user={self.username}'
+        )
+        response = requests.get(
+            path,
+            params=self.request_params
+        )
         data = response.json()
         return data['recenttracks']
