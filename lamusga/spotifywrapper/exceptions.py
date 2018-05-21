@@ -1,2 +1,0 @@
-class NoCodeNeitherRefreshTokenException(Exception):
-    pass

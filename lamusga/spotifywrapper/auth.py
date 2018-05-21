@@ -4,8 +4,6 @@ import requests
 
 from django.conf import settings
 
-from spotifywrapper.exceptions import NoCodeNeitherRefreshTokenException
-
 
 class Auth(object):
     '''
@@ -14,14 +12,7 @@ class Auth(object):
     and `refresh_token` is needed for refreshing the access token.
     '''
 
-    def __init__(self, code=None, refresh_token=None):
-        self.code = code
-        self.refresh_token = refresh_token
-        if not self.code and not self.refresh_token:
-            msg = ("You need to pass the auth code or the refresh token "
-                   "to create an Auth object")
-            raise NoCodeNeitherRefreshTokenException(msg)
-
+    def __init__(self):
         self.redirect_uri = settings.SPOTIFY_REDIRECT_URI
 
         client_id = settings.SPOTIFY_CLIENT_ID
@@ -39,10 +30,10 @@ class Auth(object):
             'Authorization': f'Basic {self.auth_key}',
         }
 
-    def request_tokens(self):
+    def request_tokens(self, code):
         payload = {
             'grant_type': 'authorization_code',
-            'code': self.code,
+            'code': code,
             'redirect_uri': self.redirect_uri,
           }
 
@@ -52,10 +43,10 @@ class Auth(object):
 
         return data['access_token'], data['refresh_token']
 
-    def refresh_access_token(self):
+    def refresh_access_token(self, refresh_token):
         payload = {
             'grant_type': 'refresh_token',
-            'refresh_token': self.refresh_token,
+            'refresh_token': refresh_token,
         }
 
         response = requests.post(
